@@ -1,0 +1,29 @@
+{
+  "name": "seo-content-system",
+  "version": "1.0.0",
+  "description": "سیستم حرفه‌ای سئو و تولید محتوا برای مجله",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "daily-publish": "node scripts/daily-publish.js",
+    "cleanup": "node scripts/cleanup.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "seo-content": "./src/index.js"
+  },
+  "keywords": ["seo", "content", "wordpress", "keyword-research", "pillar-cluster"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.3.1",
+    "inquirer": "^9.2.12",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.1",
+    "date-fns": "^2.30.0",
+    "node-fetch": "^3.3.2"
+  }
+}
