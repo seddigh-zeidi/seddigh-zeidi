@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}تقویم محتوایی - سیستم سئو{% endblock %}
+
+{% block content %}
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        <h1><i class="fas fa-calendar-alt"></i> تقویم محتوایی</h1>
+        <p class="text-muted">برنامه‌ریزی روزانه انتشار محتوا</p>
+    </div>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#generateModal">
+        <i class="fas fa-calendar-plus"></i> ایجاد تقویم جدید
+    </button>
+</div>
+
+{% if calendar_items %}
+<div class="card">
+    <div class="card-body">
+        <h5><i class="fas fa-list"></i> {{ calendar_items|length }} محتوا برنامه‌ریزی شده</h5>
+        <div class="list-group mt-3">
+            {% for item in calendar_items %}
+            <div class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-1">{{ item.title }}</h6>
+                        <small class="text-muted">
+                            <i class="fas fa-calendar"></i> {{ item.date.strftime('%Y-%m-%d') }}
+                            |
+                            {% if item.status == 'scheduled' %}
+                            <span class="badge bg-warning">برنامه‌ریزی شده</span>
+                            {% elif item.status == 'generated' %}
+                            <span class="badge bg-success">تولید شده</span>
+                            {% else %}
+                            <span class="badge bg-primary">منتشر شده</span>
+                            {% endif %}
+                        </small>
+                    </div>
+                    {% if item.status == 'scheduled' %}
+                    <form method="POST" action="/content/generate/{{ item.id }}">
+                        <button type="submit" class="btn btn-sm btn-success">
+                            <i class="fas fa-cog"></i> تولید محتوا
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="fas fa-info-circle"></i> هیچ تقویم محتوایی ایجاد نشده است.
+</div>
+{% endif %}
+
+<!-- Modal ایجاد تقویم -->
+<div class="modal fade" id="generateModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-calendar-plus"></i> ایجاد تقویم محتوایی</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="/calendar/generate">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">تعداد روزها</label>
+                        <input type="number" name="days" class="form-control" value="30" min="1" max="90" required>
+                        <small class="text-muted">تقویم برای چند روز ایجاد شود؟</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                    <button type="submit" class="btn btn-primary">ایجاد تقویم</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}دسته‌بندی‌ها - سیستم سئو{% endblock %}
+
+{% block content %}
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        <h1><i class="fas fa-folder"></i> دسته‌بندی‌ها</h1>
+        <p class="text-muted">مدیریت دسته‌بندی‌های سایت</p>
+    </div>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+        <i class="fas fa-plus"></i> دسته‌بندی جدید
+    </button>
+</div>
+
+{% if categories %}
+<div class="row">
+    {% for cat in categories %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h5 class="card-title">{{ cat.name }}</h5>
+                    <span class="badge bg-primary">{{ cat.priority }}</span>
+                </div>
+                <p class="text-muted"><small><i class="fas fa-link"></i> /{{ cat.slug }}</small></p>
+                {% if cat.description %}
+                <p class="card-text">{{ cat.description }}</p>
+                {% endif %}
+            </div>
+            <div class="card-footer bg-transparent">
+                <form method="POST" action="/categories/delete/{{ cat.id }}" class="d-inline" onsubmit="return confirm('آیا مطمئن هستید؟');">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash"></i> حذف
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="fas fa-info-circle"></i> هیچ دسته‌بندی وجود ندارد. اولین دسته‌بندی خود را ایجاد کنید.
+</div>
+{% endif %}
+
+<!-- Modal افزودن دسته‌بندی -->
+<div class="modal fade" id="addCategoryModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-folder-plus"></i> دسته‌بندی جدید</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="/categories/add">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">نام دسته‌بندی</label>
+                        <input type="text" name="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">اسلاگ (URL)</label>
+                        <input type="text" name="slug" class="form-control" required>
+                        <small class="text-muted">مثال: technology</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">توضیحات</label>
+                        <textarea name="description" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">اولویت (1-10)</label>
+                        <input type="number" name="priority" class="form-control" value="5" min="1" max="10" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">انصراف</button>
+                    <button type="submit" class="btn btn-primary">ایجاد</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

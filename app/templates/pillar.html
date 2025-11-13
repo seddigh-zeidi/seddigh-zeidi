@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Pillar-Cluster - سیستم سئو{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="fas fa-sitemap"></i> ساختار Pillar-Cluster</h1>
+    <p class="text-muted">ساختار خوشه‌ای محتوا برای سئو</p>
+</div>
+
+<div class="alert alert-primary">
+    <h5><i class="fas fa-lightbulb"></i> Pillar-Cluster چیست؟</h5>
+    <p>
+        استراتژی Pillar-Cluster یک روش پیشرفته سئو است که در آن محتوای شما به صورت خوشه‌ای سازماندهی می‌شود.
+        یک محتوای اصلی (Pillar) وجود دارد که محتوای جامعی درباره یک موضوع ارائه می‌دهد و محتواهای فرعی (Cluster)
+        به جزئیات مختلف آن موضوع می‌پردازند و به Pillar لینک می‌دهند.
+    </p>
+</div>
+
+{% if pillar_data %}
+<div class="row">
+    {% for data in pillar_data %}
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-folder-open"></i> {{ data.category.name }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <strong>کل کلمات کلیدی:</strong>
+                    <span class="badge bg-primary">{{ data.total_keywords }}</span>
+                </div>
+
+                <h6>تقسیم‌بندی کلمات کلیدی:</h6>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-graduation-cap text-info"></i> محتوای آموزشی</span>
+                        <span class="badge bg-info">{{ data.informational }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-shopping-cart text-success"></i> محتوای تجاری</span>
+                        <span class="badge bg-success">{{ data.commercial }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-credit-card text-warning"></i> محتوای خرید</span>
+                        <span class="badge bg-warning">{{ data.transactional }}</span>
+                    </li>
+                </ul>
+
+                <div class="mt-3">
+                    <small class="text-muted">
+                        ساختار Pillar-Cluster برای این دسته‌بندی به صورت خودکار از کلمات کلیدی ایجاد می‌شود.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="fas fa-info-circle"></i> هیچ دسته‌بندی یا کلمه کلیدی وجود ندارد. ابتدا دسته‌بندی و کلمات کلیدی را ایجاد کنید.
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}کلمات کلیدی - سیستم سئو{% endblock %}
+
+{% block content %}
+<div class="page-header d-flex justify-content-between align-items-center">
+    <div>
+        <h1><i class="fas fa-search"></i> کلمات کلیدی</h1>
+        <p class="text-muted">تحقیق و مدیریت کلمات کلیدی</p>
+    </div>
+    <form method="POST" action="/keywords/research-all">
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-sync"></i> تحقیق همه دسته‌ها
+        </button>
+    </form>
+</div>
+
+<!-- فیلتر دسته‌بندی -->
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="row align-items-end">
+            <div class="col-md-6">
+                <label class="form-label">فیلتر بر اساس دسته‌بندی</label>
+                <select class="form-select" onchange="if(this.value) window.location.href='/keywords/category/' + this.value">
+                    <option value="">همه دسته‌ها</option>
+                    {% for cat in categories %}
+                    <option value="{{ cat.id }}">{{ cat.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-6">
+                {% if categories %}
+                <form method="POST" action="/keywords/research/{{ categories[0].id }}">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search-plus"></i> تحقیق دسته انتخاب شده
+                    </button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if keywords %}
+<div class="card">
+    <div class="card-body">
+        <h5><i class="fas fa-list"></i> {{ keywords|length }} کلمه کلیدی یافت شد</h5>
+        <div class="table-responsive mt-3">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>کلمه کلیدی</th>
+                        <th>نوع</th>
+                        <th>حجم جستجو</th>
+                        <th>سختی</th>
+                        <th>دسته‌بندی</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for kw in keywords %}
+                    <tr>
+                        <td><strong>{{ kw.keyword }}</strong></td>
+                        <td>
+                            {% if kw.keyword_type == 'informational' %}
+                            <span class="badge bg-info">آموزشی</span>
+                            {% elif kw.keyword_type == 'commercial' %}
+                            <span class="badge bg-success">تجاری</span>
+                            {% elif kw.keyword_type == 'transactional' %}
+                            <span class="badge bg-warning">خرید</span>
+                            {% else %}
+                            <span class="badge bg-secondary">راهبری</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ kw.search_volume }}</td>
+                        <td>
+                            <div class="progress" style="height: 20px;">
+                                <div class="progress-bar
+                                    {% if kw.difficulty < 30 %}bg-success
+                                    {% elif kw.difficulty < 60 %}bg-warning
+                                    {% else %}bg-danger{% endif %}"
+                                    style="width: {{ kw.difficulty }}%">{{ kw.difficulty }}</div>
+                            </div>
+                        </td>
+                        <td>{{ kw.category.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info">
+    <i class="fas fa-info-circle"></i> هیچ کلمه کلیدی یافت نشد. ابتدا تحقیق کلمات کلیدی را انجام دهید.
+</div>
+{% endif %}
+{% endblock %}

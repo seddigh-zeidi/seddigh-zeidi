@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}انتشار - سیستم سئو{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><i class="fas fa-paper-plane"></i> انتشار محتوا</h1>
+    <p class="text-muted">انتشار محتوا روی وردپرس (شبیه‌سازی)</p>
+</div>
+
+<div class="alert alert-info">
+    <i class="fas fa-info-circle"></i>
+    <strong>توجه:</strong> در این نسخه، عملیات انتشار شبیه‌سازی می‌شود. برای اتصال واقعی به وردپرس، تنظیمات API را انجام دهید.
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fas fa-file fa-3x text-primary mb-3"></i>
+                <h3>{{ generated_content|length }}</h3>
+                <p class="text-muted">آماده انتشار</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fas fa-cloud-upload-alt fa-3x text-success mb-3"></i>
+                <h3>{{ published_content|length }}</h3>
+                <p class="text-muted">منتشر شده</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if generated_content %}
+<div class="card">
+    <div class="card-body">
+        <h5><i class="fas fa-list"></i> محتوای آماده انتشار</h5>
+        <div class="list-group mt-3">
+            {% for content in generated_content %}
+            <div class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-1">{{ content.title }}</h6>
+                        <small class="text-muted">
+                            {{ content.word_count }} کلمه | {{ content.reading_time }} دقیقه مطالعه
+                        </small>
+                    </div>
+                    <form method="POST" action="/publish/simulate/{{ content.id }}">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-upload"></i> انتشار
+                        </button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-warning">
+    <i class="fas fa-exclamation-triangle"></i> محتوایی برای انتشار وجود ندارد. ابتدا محتوا تولید کنید.
+</div>
+{% endif %}
+{% endblock %}
