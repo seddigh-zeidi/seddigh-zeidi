@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنرهای تبلیغاتی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-8">
+
+    <section class="py-8 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- بنر JBL -->
+                <div class="relative overflow-hidden rounded-2xl h-64 md:h-72 group cursor-pointer">
+                    <!-- گرادیانت پس‌زمینه -->
+                    <div class="absolute inset-0 bg-gradient-to-l from-blue-600 via-blue-500 to-blue-400"></div>
+
+                    <!-- پترن تزئینی - استایل والمارت -->
+                    <div class="absolute top-4 right-4 opacity-30">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                            <path d="M40 5 L40 32" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M40 48 L40 75" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M5 40 L32 40" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M48 40 L75 40" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M12 12 L28 28" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M52 52 L68 68" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M68 12 L52 28" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M28 52 L12 68" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- تصویر پس‌زمینه سمت چپ -->
+                    <div class="absolute left-0 top-0 w-1/2 h-full overflow-hidden">
+                        <img src="/images/jbl-bg.jpg" alt="" class="w-full h-full object-cover opacity-40">
+                    </div>
+
+                    <!-- محتوای اصلی -->
+                    <div class="relative h-full flex items-center justify-between p-6 z-10">
+
+                        <!-- متن - سمت راست -->
+                        <div class="flex flex-col items-start text-white space-y-2 w-1/2">
+                            <!-- لوگوی برند -->
+                            <div class="bg-white px-4 py-2 rounded-lg mb-2 shadow-lg">
+                                <img src="/images/jbl-logo.png" alt="JBL" class="h-6 object-contain">
+                                <!-- جایگزین اگر لوگو نبود -->
+                                <!-- <span class="text-red-600 font-bold text-xl">JBL</span> -->
+                            </div>
+
+                            <!-- عنوان -->
+                            <h3 class="text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
+                                فـروش ویـــژه
+                            </h3>
+                            <h4 class="text-xl md:text-2xl font-bold leading-tight drop-shadow-md">
+                                محصولات جی بی ال
+                            </h4>
+
+                            <!-- نشان تخفیف -->
+                            <div class="flex items-center gap-2 mt-3">
+                                <span class="text-sm font-medium">فروش ویژه تا</span>
+                                <div class="flex items-center bg-red-500 text-white px-3 py-1 rounded-full shadow-lg">
+                                    <span class="text-lg font-bold">۹۰٪</span>
+                                </div>
+                                <span class="text-sm font-medium">تخفیف</span>
+                            </div>
+                        </div>
+
+                        <!-- تصویر محصول - سمت چپ -->
+                        <div class="w-1/2 flex justify-center items-center">
+                            <img
+                                src="/images/jbl-speaker.png"
+                                alt="اسپیکر JBL"
+                                class="max-h-48 md:max-h-56 object-contain drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- دکمه‌های ناوبری -->
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+                        <button class="w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110">
+                            <svg class="w-4 h-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                        <button class="w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110">
+                            <svg class="w-4 h-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- اندیکاتور اسلاید -->
+                    <div class="absolute bottom-4 right-4 flex gap-1.5 z-20">
+                        <div class="w-5 h-2 rounded-full bg-white transition-all duration-200"></div>
+                        <div class="w-2 h-2 rounded-full bg-white/50"></div>
+                        <div class="w-2 h-2 rounded-full bg-white/50"></div>
+                    </div>
+                </div>
+
+                <!-- بنر Dyson -->
+                <div class="relative overflow-hidden rounded-2xl h-64 md:h-72 group cursor-pointer">
+                    <!-- گرادیانت پس‌زمینه -->
+                    <div class="absolute inset-0 bg-gradient-to-l from-blue-700 via-blue-600 to-blue-500"></div>
+
+                    <!-- پترن تزئینی -->
+                    <div class="absolute top-4 right-4 opacity-30">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                            <path d="M40 5 L40 32" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M40 48 L40 75" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M5 40 L32 40" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M48 40 L75 40" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M12 12 L28 28" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M52 52 L68 68" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M68 12 L52 28" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M28 52 L12 68" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- تصویر پس‌زمینه سمت چپ -->
+                    <div class="absolute left-0 top-0 w-1/2 h-full overflow-hidden">
+                        <img src="/images/dyson-bg.jpg" alt="" class="w-full h-full object-cover opacity-40">
+                    </div>
+
+                    <!-- محتوای اصلی -->
+                    <div class="relative h-full flex items-center justify-between p-6 z-10">
+
+                        <!-- متن - سمت راست -->
+                        <div class="flex flex-col items-start text-white space-y-2 w-1/2">
+                            <!-- لوگوی برند -->
+                            <div class="bg-white px-4 py-2 rounded-lg mb-2 shadow-lg">
+                                <img src="/images/dyson-logo.png" alt="dyson" class="h-5 object-contain">
+                                <!-- جایگزین اگر لوگو نبود -->
+                                <!-- <span class="text-gray-800 font-bold text-lg tracking-wider">dyson</span> -->
+                            </div>
+
+                            <!-- عنوان -->
+                            <h3 class="text-2xl md:text-3xl font-extrabold leading-tight drop-shadow-lg">
+                                فـروش ویـــژه
+                            </h3>
+                            <h4 class="text-xl md:text-2xl font-bold leading-tight drop-shadow-md">
+                                محصولات دایسون
+                            </h4>
+
+                            <!-- نشان تخفیف -->
+                            <div class="flex items-center gap-2 mt-3">
+                                <span class="text-sm font-medium">فروش ویژه تا</span>
+                                <div class="flex items-center bg-red-500 text-white px-3 py-1 rounded-full shadow-lg">
+                                    <span class="text-lg font-bold">۹۰٪</span>
+                                </div>
+                                <span class="text-sm font-medium">تخفیف</span>
+                            </div>
+                        </div>
+
+                        <!-- تصویر محصول - سمت چپ -->
+                        <div class="w-1/2 flex justify-center items-center">
+                            <img
+                                src="/images/dyson-headphone.png"
+                                alt="هدفون دایسون"
+                                class="max-h-48 md:max-h-56 object-contain drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- دکمه‌های ناوبری -->
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+                        <button class="w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110">
+                            <svg class="w-4 h-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                        <button class="w-9 h-9 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all duration-200 hover:scale-110">
+                            <svg class="w-4 h-4 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- اندیکاتور اسلاید -->
+                    <div class="absolute bottom-4 right-4 flex gap-1.5 z-20">
+                        <div class="w-5 h-2 rounded-full bg-white transition-all duration-200"></div>
+                        <div class="w-2 h-2 rounded-full bg-white/50"></div>
+                        <div class="w-2 h-2 rounded-full bg-white/50"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // مدیریت اسلایدر برای هر بنر
+        document.querySelectorAll('.group').forEach(banner => {
+            const prevBtn = banner.querySelectorAll('button')[0];
+            const nextBtn = banner.querySelectorAll('button')[1];
+            const indicators = banner.querySelectorAll('.bottom-4.right-4 > div');
+            let currentSlide = 0;
+
+            const updateIndicators = () => {
+                indicators.forEach((ind, i) => {
+                    if (i === currentSlide) {
+                        ind.classList.remove('w-2', 'bg-white/50');
+                        ind.classList.add('w-5', 'bg-white');
+                    } else {
+                        ind.classList.remove('w-5', 'bg-white');
+                        ind.classList.add('w-2', 'bg-white/50');
+                    }
+                });
+            };
+
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % 3;
+                updateIndicators();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + 3) % 3;
+                updateIndicators();
+            });
+        });
+    </script>
+
+</body>
+</html>
